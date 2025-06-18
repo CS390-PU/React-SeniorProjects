@@ -1,5 +1,5 @@
 # [Choice] Node.js version (use -bullseye variants on local arm64/Apple Silicon): 18, 16, 14, 18-bullseye, 16-bullseye, 14-bullseye, 18-buster, 16-buster, 14-buster
-ARG VARIANT=18-bullseye
+ARG VARIANT=18.18-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
 # Install MongoDB command line tools - though mongo-database-tools not available on arm64
@@ -22,3 +22,6 @@ RUN . /etc/os-release \
 
                         # [Optional] Uncomment if you want to install more global node modules
                         # RUN su node -c "npm install -g <your-package-list-here>"
+
+# ✅ Automatically upgrade npm to the latest version
+RUN npm install -g npm@latest
